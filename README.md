@@ -1,5 +1,6 @@
 # Fruit-Quality-Detection
 In the project we have followed interactive design techniques for building the iot application. We have extracted the requirements for the application based on the brief. We performed ideation of the brief and generated concepts based on which we built a prototype and tested it. Later we have furnished the final design to build the product and executed final deployment and testing.  The product contains a sensor fixed inside the warehouse of super markets which monitors by clicking an image of bananas (we have considered a single fruit) every 2 minutes and transfers it to the server. The server logs the image of bananas to along with click time and status i.e., fresh (or) rotten. The client can request it from the server explicitly or he is notified along a period. The server responds back with the current status and last five entries for the past status of the banana.
+
 ------
 Technologies Used:
 Using  "Python Flask" we have written the Api's.
