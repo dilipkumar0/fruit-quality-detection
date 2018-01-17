@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Smart-fridge</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="static/js/angular.js"></script>
+
+
+    <script>
+        angular.module('myApp', [])
+            .controller('HomeCtrl', function($scope, $http) {
+			
+				$scope.info = {};
+				$scope.asdfg="Rajesh Kumar";
+				
+				$scope.showAdd = true;
+
+
+		$scope.last = function() {
+				$http({
+						method: 'GET',
+						url: '/showData',
+					}).then(function(response) {
+						d=response["data"];	
+						$scope.dd=d["base64"];
+						$scope.status=parseInt(d["status"]);
+						if($scope.status == 1)
+						{ alert("Bananas Getting Rotten");}
+
+						console.log(response);
+						$scope.info = {}
+					}, function(error) {
+						console.log(error);
+					})
+			}		
+
+				$scope.lastFive = function(){	
+					
+					$http({
+						method: 'GET',
+						url: '/lastFive',
+					}).then(function(response) {
+						$scope.f=response["data"];
+
+						 $scope.keys = Object.keys($scope.f);
+						console.log($scope.f);
+						console.log($scope.f);
+						//console.log( "f['0']['status'" ,  f['0']['status']);
+						var len = $scope.keys.length;
+
+		
+						console.log(len);
+
+						//print 
+//					$scope.range = [];		
+//					for(var i=0;i<len;i++) { range.push(f[i.toString()])	}
+						
+
+						$scope.info = {}
+					}, function(error) {
+						console.log(error);
+					})
+				}
+				
+	})
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body ng-controller="HomeCtrl">
+
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Internet of Bananas</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Rotten Banana Detection</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">By Smart fridge IOT device</h5>
+        </div>
+        <div class="row center">
+          <!--a href="" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Current Status</a>-->
+           <!-- Modal Trigger -->
+          <a class="waves-effect waves-light text-lighten-1 btn modal-trigger" href="#modal1" ng-click="last()">Get Current Status</a>
+
+        </div>
+        <br><br>
+
+          <!-- Modal Structure -->
+        <div id="modal1" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4 class="grey-text text-darken-4">Current status of banana</h4>
+	  	
+            <img src="data:image/png;base64,{{'{{dd}}'}}" alt="Unsplashed background img 1"/>
+            <p class="grey-text text-darken-4" ng-if="status==0" >Fresh Banana </p>
+            <p class="grey-text text-darken-4" ng-if="status==1" >Rotten Banana</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="parallax"><img ng-src="static/images/banana4.png" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+ 
+
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Speeds up development</h5>
+
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">User Experience Focused</h5>
+
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">The past stages/statuses of the banana can be analysed to judge it's decay time value.</h5>
+        </div>
+        <div class="row center">
+          <!--a href="" id="download-button" class="btn waves-effect waves-light teal lighten-1">Get past Status</a-->
+           <!-- Modal Trigger -->
+          <a class="waves-effect waves-light text-lighten-1 btn modal-trigger" href="#modal2" ng-click="lastFive()">Get Past Status</a>          
+        </div>
+        <br><br>
+
+          <!-- Modal Structure -->
+        <div id="modal2" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h5 class="grey-text text-darken-4" >Past status of Banana</h5>
+            
+			<div ng-repeat="x in f">           
+				 <img src="data:image/png;base64,{{'{{x.base64}}'}}" alt="Unsplashed background img 1"/>
+			    <p class="white-text text-darken-4">{{'{{x.status}}'}}</p>
+
+			</div>
+
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="static/images/banana6.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>Working</h4>
+          <p class="left-align light">In our project the sensor is built inside the refrigerator which clicks an image of the banana for every 2 minutes interval and transfers it to the server. The server maintains a file which it logs the banana image to it's corresponding click time and status i.e., fresh (or) rotten. When the client wants to read the status of the banana he can request it from the server. The server responds back with the last entry in the file for current status and last five entries for the past status of the banana.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Team Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project for our <br> CS-451, Design of IOT course.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Made by -</h5>
+          <ul>
+             <a class="brown-text text-lighten-3">Kasthuri Rajesh-1401024</a>
+             <br><a class="brown-text text-lighten-3">Kundrapu Dilip Kumar-1401027</a>
+             <br><a class="brown-text text-lighten-3">Prerna Prem-1401040</a>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class=" center footer-copyright">
+         <a style="width: 2000px" class="center white-text">©Copyrights reserved, 2017.</a>        
+    </div>
+  </footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="static/js/materialize.js"></script>
+  <script src="static/js/init.js"></script>
+
+  </body>
+</html>
