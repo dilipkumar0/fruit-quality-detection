@@ -12,20 +12,20 @@ How to deploy:
 -
 1) In order to run the application, you need to initially install the opencv  
 
-   sudo apt-get install libopencv-dev python-opencv
-   sudo pip  install numpy
-   sudo pip  install pandas
-   sudo apt-get install python-scipy
-   sudo pip   install -U scikit-learn
-   sudo pip   install sklearn
-   python -m pip   install Pillow
-   pip install   install flask flask-jsonpify flask-restful
-   pip  install werkzeug
-   sudo pip install   flask-restful
-   pip install  --upgrade werkzeug
-   pip install  --upgrade jinja2
-   pip install  --upgrade itsdangerous
-   pip install  --upgrade click
+   sudo apt-get install libopencv-dev python-opencv;
+   sudo pip  install numpy;
+   sudo pip  install pandas;
+   sudo apt-get install python-scipy;
+   sudo pip   install -U scikit-learn;
+   sudo pip   install sklearn;
+   python -m pip   install Pillow;
+   pip install   install flask flask-jsonpify flask-restful;
+   pip  install werkzeug;
+   sudo pip install   flask-restful;
+   pip install  --upgrade werkzeug;
+   pip install  --upgrade jinja2;
+   pip install  --upgrade itsdangerous;
+   pip install  --upgrade click;
 
 2) Open the code files.
  
